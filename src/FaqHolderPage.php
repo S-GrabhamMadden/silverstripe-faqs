@@ -55,7 +55,7 @@ class FaqHolderPage extends Page
         return _t('FaqHolderPage.SINGULARNAME', 'FAQ Holder Page');
     }
 
-    public function i18n_plural_name()
+    public function plural_name()
     {
         return _t('FaqHolderPage.PLURALNAME', 'FAQ Holder Pages');
     }
@@ -79,6 +79,7 @@ class FaqHolderPage extends Page
             if (! empty($filter)) {
                 $children = $children->filter($filter);
             }
+
             if ($children->exists()) {
                 ++$this->numberOfRecursionsGroups;
                 foreach ($children as $child) {
@@ -107,9 +108,11 @@ class FaqHolderPage extends Page
         } else {
             $entries = $entryClassName::get()->filter(['ParentID' => array_merge([$this->ID], $childGroups->column('ID'))]);
         }
-        if (! empty($filter)) {
+
+        if ($filter !== null && $filter !== []) {
             $entries = $entries->filter($filter);
         }
+
         return $entries;
     }
 

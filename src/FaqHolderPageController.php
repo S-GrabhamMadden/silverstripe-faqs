@@ -2,19 +2,16 @@
 
 namespace Sunnysideup\Faqs;
 
+use SilverStripe\ORM\DataList;
 use PageController;
-use SilverStripe\CMS\Model\SiteTree;
-use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\Versioned\Versioned;
 use SilverStripe\View\Requirements;
 
 /**
  * Class \Sunnysideup\Faqs\FaqHolderPageController
  *
- * @property \Sunnysideup\Faqs\FaqHolderPage $dataRecord
- * @method \Sunnysideup\Faqs\FaqHolderPage data()
- * @mixin \Sunnysideup\Faqs\FaqHolderPage
+ * @property FaqHolderPage $dataRecord
+ * @method FaqHolderPage data()
+ * @mixin FaqHolderPage
  */
 class FaqHolderPageController extends PageController
 {
@@ -22,7 +19,7 @@ class FaqHolderPageController extends PageController
      * returns all underlying FaqOnePage pages...
      * for use in templates.
      *
-     * @return null|\SilverStripe\ORM\DataList
+     * @return null|DataList
      */
     public function Entries() {}
 

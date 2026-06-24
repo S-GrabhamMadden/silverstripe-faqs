@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sunnysideup\Faqs;
 
 use Page;
@@ -47,7 +49,7 @@ class FaqOnePage extends Page
         return _t('FAQPage.SINGULARNAME', 'FAQ Page');
     }
 
-    public function i18n_plural_name()
+    public function plural_name()
     {
         return _t('FAQPage.PLURALNAME', 'FAQ Pages');
     }
@@ -57,10 +59,10 @@ class FaqOnePage extends Page
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->replaceField('Title', new TextField('Title', 'Question'));
-        $fields->replaceField('MenuTitle', new TextField('MenuTitle', 'Question - short version for menus'));
-        $fields->replaceField('Content', new HTMLEditorField('Content', 'Answer'));
-        $fields->replaceField('MoreDetails', new HTMLEditorField('MoreDetails', 'Additional Details'));
+        $fields->replaceField('Title', TextField::create('Title', 'Question'));
+        $fields->replaceField('MenuTitle', TextField::create('MenuTitle', 'Question - short version for menus'));
+        $fields->replaceField('Content', HTMLEditorField::create('Content', 'Answer'));
+        $fields->replaceField('MoreDetails', HTMLEditorField::create('MoreDetails', 'Additional Details'));
 
         return $fields;
     }
